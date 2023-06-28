@@ -1,0 +1,95 @@
+*{
+    padding:0;
+    margin: 0;
+}
+
+.head{
+    background-color: aqua;
+    padding:1rem;
+    font-weight: bold;
+    color:black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+.dish{
+    padding: 1rem;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content:flex-start;
+}
+
+.dish > * {
+    margin:10px 30px;
+    padding:10px 30px;
+}
+
+.dish input[type=search]{
+    min-width: 400px;
+    padding: 10px 10px;
+}
+
+.dish input[type=submit]{
+    font-weight: bold;
+    color:green;
+    background-color: aquamarine;
+    cursor: pointer;
+}
+
+.dish input[type=submit]:hover{
+    color:green;
+    background-color:chartreuse;
+    
+}
+.searchhead{
+    margin-top: 1.5rem;
+    text-align: center;
+}
+.searchitem{
+    color:black;
+    background-color: lightpink;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+.tablecontainer{
+    padding: 10px 20px;
+}
+
+table,th,td{
+    border: 1px solid black;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    margin-top: 1rem;
+    border-collapse: collapse;
+    table-layout:auto;
+}
+
+
+th{
+    height: 50px;
+    background-color: aqua;
+}
+tr{
+    background-color: rgb(200, 252, 236);
+}
+td{
+    max-width: 300px;
+}
+tr:hover{
+    background-color: rgb(253, 253, 132);
+}
+
+ul{
+    list-style: none;
+}
+
+.note{
+    color:blueviolet;
+}
+.rate{
+    color: darkgreen;
+    font-weight: bold;
+}

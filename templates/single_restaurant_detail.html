@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <link rel="stylesheet" href="{% static 'single_restaurant_details.css' %}">
+</head>
+<body>
+    <h1>Restaurant Full Details</h1> 
+    <ul>
+        <li><span class="field">Restaurant Id : </span><span class="value">{{rid}}</span></li>
+        <li><span class="field">Restaurant Name : </span><span class="value">{{name}}</span></li>
+        <li><span class="field">Restaurant City : </span><span class="value">{{city}}</span></li>
+        <li><span class="field">Restaurant Items : </span><span class="value">{{items}}</span></li>
+        <li><span class="field">Lat & Long : </span><span class="value">{{lat_long}}</span></li>
+        <li><span class="field">Others : </span><span class="value">{{full_details}}</span></li>
+
+    </ul>
+    <div class="buttons">
+    <a href="{% url 'home' %}"><input type="button" value="Home" ></a>
+    
+    <input type=button value="Go Back" onClick="javascript:history.go(-1);">
+</div>
+</body>
+</html>

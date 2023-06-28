@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HOME</title>
+        <link rel="stylesheet" href="{% static 'home.css'%}">
+    </head>
+    <body>
+        <h1 class="head">Dish Search</h1>
+        <form action="" method="post">
+
+        {% csrf_token %}
+        <div class="dish">
+        <p>Enter Dish to Search:</p>
+        <input type="search" name="searchdish" id="searchdish" placeholder="Idli, dosa, plain rice" required>
+        <input type="submit" value="Search" >
+        </div>
+    
+        </form>
+
+        {% if dishsearched %}
+        <h3 class="searchhead">Restaurants having <i class="searchitem">{{dishsearched}}</i> :</h3>
+        
+        <div class="tablecontainer">
+        <table>
+        <tr class="table_head">
+            <th>Name</th>
+            <th>City</th>
+            <th>Address</th>
+            <th>Items & Rates</th>
+            <th>Cuisines</th>
+            <th>Rating</th>
+            <th>Other</th>
+        </tr>
+        
+        {% for dicty in final_restaurants_list %}
+        <tr>
+            <td>{{dicty.name}}</td>
+            <td>{{dicty.location}}</td>
+            <td>
+                <p>{{dicty.full_details.location.address}}</p><br>
+                <p>Latitude : {{dicty.full_details.location.latitude}}</p>
+                <p>Longitude : {{dicty.full_details.location.longitude}}</p>
+
+            </td>
+            <td>
+                <p class="note">(Note: Rate Currency = {{dicty.full_details.currency}})</p>
+                <ul>
+                {% for item,rate in dicty.items_searched.items %}
+                <li>{{item}} : <span class="rate">{{rate}}</span></li>
+                {% endfor %}
+                </ul>
+            </td>
+            <td><ul>
+                <li>{{dicty.full_details.cuisines}}</li>
+            </ul></td>
+            <td>{{dicty.full_details.user_rating.aggregate_rating}} | <span style="color:#{{dicty.full_details.user_rating.rating_color}};font-weight:bold"> {{dicty.full_details.user_rating.rating_text}} </span> | {{dicty.full_details.user_rating.votes}} votes</td>
+            <td><a href="details/{{dicty.rid}}">View All Details</a></td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+        {% endif %}
+        
+    
+        <script>
+            {% if dishsearched %}
+            document.getElementById("searchdish").value="{{dishsearched}}";
+            {% endif %}
+        </script>
+
+</body>
+</html>
